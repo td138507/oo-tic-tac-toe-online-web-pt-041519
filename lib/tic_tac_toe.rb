@@ -47,4 +47,3 @@ def turn_count
   end
   number_of_turns
 end
-

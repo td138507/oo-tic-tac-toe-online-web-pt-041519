@@ -70,3 +70,31 @@ end
 def full?
   @board.all? {|letter| letter != " "}
 end
+
+def draw?
+  full? && !won? ? true : false
+end
+
+def over?
+  full? || won? || draw? ? true : false
+end
+
+def winner
+  status = won?
+  status.nil? nil : @board[status[0]]
+end
+
+def play
+  player_turn = 0
+  while player_turn < 9 && !over?
+    turn
+    player_turn += 1
+  end
+  if draw?
+    puts "Cat's Game!"
+  else
+    puts "Congradulations #{winner}!"
+  end
+end
+
+end

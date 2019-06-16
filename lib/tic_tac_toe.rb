@@ -47,3 +47,26 @@ def turn_count
   end
   number_of_turns
 end
+
+def turn
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  token = current_player
+  if valid_move?(index)
+    move(index, token)
+    display_board
+  else
+    turn
+  end
+end
+
+def won?
+  WIN_COMBINATIONS.detect do |combo|
+    @board[combo[0]] == @board[combo[1]] && @board[combo[1]] == @board[combo[2]] && @board[combo[0]] != " "
+  end
+end
+
+def full?
+  @board.all? {|letter| letter != " "}
+end

@@ -81,7 +81,7 @@ end
 
 def winner
   status = won?
-  status.nil? nil : @board[status[0]]
+  status.nil? ? nil : @board[status[0]]
 end
 
 def play
